@@ -37,6 +37,12 @@ class Chambre
      */
     private $etat;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=GammeChambre::class, inversedBy="chambres")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $gamme;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Chambre
     public function setEtat(bool $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getGamme(): ?GammeChambre
+    {
+        return $this->gamme;
+    }
+
+    public function setGamme(?GammeChambre $gamme): self
+    {
+        $this->gamme = $gamme;
 
         return $this;
     }
