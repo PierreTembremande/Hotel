@@ -9,7 +9,39 @@
 
 <div class="example-wrapper">
     <h1> Listes des chambres de l'hotel</h1>
-    {{dump(chambres)}}
+
+<table class="table table-dark table-hover">
+
+        <thead>
+
+            <th>Numero de chambre</th>
+            <th>Nombre de lit</th>
+            <th>localisation</th>
+            <th>gamme</th>
+            <th>etat</th>
+            
+        </thead>
+
+    <tbody>
+
+        {% for chambre in chambres%}
+
+            <tr>
+                <td>{{chambre.numero}}</td>
+                <td>{{chambre.nblit}}</td>
+                <td>{{chambre.localisation}}</td>
+                <td>{{chambre.gamme.description}}</td>
+                <td>{% if  chambre.etat == 0 %} Indisponible {% else %} Disponible {% endif %}</td>
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{# {{dump(chambres)}} #}
+
 
 </div>
 {% endblock %}
